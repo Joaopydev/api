@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% block form %}
+    <header class="flex justify-center items-center min-h-screen bg-indigo-800" style="background-image: url('https://st3.depositphotos.com/1388768/37656/i/600/depositphotos_376566760-stock-photo-api-application-programming-interface-software.jpg')">
+        <div class="z-10 h-full w-full py-32 md:py-0 text-gray-100 flex items-center flex-col">
+            <div class="col-md-5">
+                <form method="POST" action="" class="p-4 mt-2 container bg-black bg-opacity-75 rounded-lg">
+                    {{ form.csrf_token }}
+                    <div class="container">
+                        <fieldset>
+                            <div class="form-group">
+                                {{ form.email.label() }}
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for erro in form.email.errors %}
+                                            {{ erro }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.email(class="form-control") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.confirmacao_email.label() }}
+                                {% if form.confirmacao_email.errors %}
+                                    {{ form.confirmacao_email(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for erro in form.confirmacao_email.errors %}
+                                            {{ erro }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.confirmacao_email(class="form-control") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.senha.label() }}
+                                {% if form.senha.errors %}
+                                    {{ form.senha(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for erro in form.senha.errors %}
+                                            {{ erro }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.senha(class="form-control") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.confirmacao_senha.label() }}
+                                {% if form.confirmacao_senha.errors %}
+                                    {{ form.confirmacao_senha(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for erro in form.confirmacao_senha.errors %}
+                                            {{ erro }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.confirmacao_senha(class="form-control") }}
+                                {% endif %}
+                            </div>
+                        </fieldset>
+                        {{ form.botao_criar_conta(class="btn btn-primary mt-2") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    <footer class="px-5 py-10 bg-slate-950">
+        <ul class="flex justify-between items-center">
+            <li class="text-white">&copy; 2024</li>
+            <li class="text-white"> Feito com Python (Flask)</li>
+            <li class="text-white">REST API</li>
+        </ul>
+    </footer>
+    {% endblock %}
+{% endblock %}

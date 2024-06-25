@@ -1,0 +1,26 @@
+#tempAlert {
+    opacity: 1; /* Comece com opacidade total */
+    transition: opacity 1s ease-in-out; /* Adicione uma transição suave */
+}
+
+.h1 {
+    font-family: Arial, sans-serif; /* Substitua Arial pela fonte desejada */
+    color: #333; /* Cor do texto */
+    font-size: 30px; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte (negrito) */
+    /* Outras propriedades de estilo conforme necessário */
+}
+
+.link-criarconta {
+  color: white;
+  text-decoration: none;
+}
+
+
+.fundo-mn {
+    background: #f2f5f8 !important;
+}
+
+.fundo-negative{
+    background: #ff0000 !important;
+}

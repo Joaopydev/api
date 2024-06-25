@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <header class="py-4 bg-slate-800 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat">
+        <div class="h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
+
+            <h1 class="font-semibold text-4xl md:text-5xl w-10/12 md:w-3/4 text-center">
+               Guia da API
+            </h1>
+            <h3 class="text-xl md:text-xl py-3 container">
+                Controlar sua finanças se tornou ainda mais fácil, por isso nós desenvolvemos a API Finance Professional. Uma API para desenvolvedores controlarem seus gastos mensais e assim se organizarem financeiramente.
+                Nessa sessão você verá todas as funcionalidades que a nossa API possui. Tenha em mente que será essencial o seu token que é criado automaticamente, visualize-o: <a href="#" class="underline text-blue-600" data-modal-target="default-modal" data-modal-toggle="default-modal">Seu Token</a>
+            </h3>
+        </div>
+    </header>
+
+    <section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh; background-image: url('{{ url_for('static', filename='images/v1008-22-b.jpg') }}')">
+        <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10 ">
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4">
+                Sessão: Adicionar Receita.
+            </h2>
+            <h5 class="md:text-xl text-lg">
+                Receitas
+                API de Receitas: Gerencie todas as suas fontes de renda com eficiência. Registre, atualize, consulte e exclua receitas financeiras, mantendo um controle claro e organizado de todas as suas entradas de dinheiro. Aprenda a utilizar com a sessão ao lado.
+
+            </h5>
+        </div>
+        <div class='md:w-1/2 flex flex-col justify-center items-center'>
+            <div class="flex space-x-2 mb-2">
+                <button id="linkToCopy" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    http://127.0.0.1:5000/api-finance-professional/adicionar-receita/
+                </button>
+                 <button id="copyLinkBtn" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    Copiar Link
+                </button>
+            </div>
+            <h5 class="md:text-xl text-lg mt-4">
+                Para adicionar suas receitas, você deve enviar para a API um dicionário com os seguintes dados:
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4">
+            {"user": "E-mail da sua conta",
+            </h5>
+            <h5 id="#receita" class="md:text-xl text-lg mt-4">
+                "token": <a href="#receita" class="underline text-blue-600" data-modal-target="default-modal" data-modal-toggle="default-modal">"Seu token de usuário"</a>,
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4">
+             "tipo" : "Tipo de receita (Ex: Trabalho )",
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4">
+                "valor" : "Valor relacionado a sua receita"}
+            </h5>
+            <!-- Adicione um elemento de texto oculto para armazenar o link a ser copiado -->
+            <input type="text" id="hiddenLinkInput" value="http://127.0.0.1:5000/api-finance-professional/adicionar-receita/" class="hidden">
+        </div>
+    </section>
+
+    <section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh; background-image: url('{{ url_for('static', filename='images/sessao_despesas.jpg') }}')">
+        <div class='md:w-1/2 flex flex-col justify-center items-center'>
+            <div class="flex space-x-2 mb-2">
+                <button id="linkToCopy2" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    http://127.0.0.1:5000/api-finance-professional/adicionar-despesa/
+                </button>
+                 <button id="copyLinkBtn2" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    Copiar Link
+                </button>
+            </div>
+            <h5 class="md:text-xl text-lg mt-4">
+                Para adicionar suas despesas, você deve enviar para a API um dicionário com os seguintes dados:
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4">
+            {"user": "E-mail da sua conta",
+            </h5>
+            <h5 id='#despesa' class="md:text-xl text-lg mt-4">
+                "token": <a href="#despesa" class="underline text-blue-600" data-modal-target="default-modal" data-modal-toggle="default-modal">"Seu token de usuário"</a>,
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4">
+             "tipo" : "Tipo de despesa (Ex: Academia )",
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4">
+                "valor" : "Valor relacionado a sua despesa"}
+            </h5>
+        </div>
+
+        <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10">
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4">
+                Sessão: Adicionar Despesa.
+            </h2>
+            <h5 class="md:text-xl text-lg">
+                As despesas incluem qualquer transação ou saída de fundos que reduza o saldo disponível do usuário. Elas podem ser categorizadas de várias maneiras, permitindo uma análise detalhada e uma gestão financeira eficiente.
+            </h5>
+            <h5 class="md:text-xl text-lg">
+                Exemplos de despesas: Alimentação, moradia, transporte, saúde e etc...
+            </h5>
+        </div>
+    </section>
+
+    <section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8 relative bg-cover' style="min-height: 70vh; background-image: url('{{ url_for('static', filename='images/sessao_resumo_financeiro.webp') }}')">
+        <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10">
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4">
+                Sessão: Obter Resumo Financeiro.
+            </h2>
+            <h5 class="md:text-xl text-lg">
+                O resumo financeiro oferece uma análise agregada das transações financeiras de um usuário em um período especificado. Ele inclui informações sobre o total de receitas, o total de despesas, o saldo líquido e outras métricas financeiras relevantes. Este recurso é projetado para fornecer uma visão clara e instantânea da saúde financeira do usuário.
+            </h5>
+        </div>
+        <div class='md:w-1/2 flex flex-col justify-center items-center'>
+            <div class="flex space-x-2 mb-2">
+                <button id="linkToCopy3" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    http://127.0.0.1:5000//api-finance-professional/obter-resumo/SEU_EMAIL/SEU_TOKEN
+                </button>
+                 <button id="copyLinkBtn4" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    Copiar Link
+                </button>
+            </div>
+            <h5 id='#resumo' class="md:text-xl text-lg mt-4">
+                Para obter o seu resumo financeiro, você precisa apenas copiar o link acima. E alterar "SEU_MAIL" colocando o seu e-mail de usuário e <a href="#resumo" class="underline text-blue-600" data-modal-target="default-modal" data-modal-toggle="default-modal">"SEU_TOKEN"</a> colocando o seu token de usuário.
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4">
+                A API vai retornar todos os dados financeiros referente as receitas e despesas do usuário.
+            </h5>
+        </div>
+        </div>
+    </section>
+    <section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh; background-image: url('{{ url_for('static', filename='images/sessao_remover_receitas.png') }}')">
+        <div class='md:w-1/2 flex flex-col justify-center items-center'>
+            <div class="flex space-x-2 mb-2">
+                <button id="linkToCopy4" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    http://127.0.0.1:5000/api-finance-professional/remover-receita/
+                </button>
+                 <button id="copyLinkBtn3" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    Copiar Link
+                </button>
+            </div>
+            <h5 class="md:text-xl text-lg mt-4 text-white">
+                Para remover suas receitas, você deve enviar para a API um dicionário com os seguintes dados:
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4 text-white">
+            {"user": "E-mail da sua conta",
+            </h5>
+            <h5 id='#removerreceita' class="md:text-xl text-lg mt-4 text-white">
+                "token": <a href="#despesa" class="underline text-blue-600" data-modal-target="default-modal" data-modal-toggle="default-modal">"Seu token de usuário"</a>,
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4 text-white">
+             "id_receita" : "ID da receita que deseja remover"}
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4 text-white">
+                Obs: O ID da receita você consegue visualizar no seu resumo financeiro.
+            </h5>
+        </div>
+
+        <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10">
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4 text-white">
+                Sessão: Remover Receitas do usuário.
+            </h2>
+            <h5 class="md:text-xl text-lg text-white">
+                A remoção de receitas é uma operação crítica para garantir que os registros financeiros do usuário reflitam com precisão suas transações reais. Ao permitir a exclusão de receitas, a API ajuda os usuários a corrigirem entradas erradas e a manterem seus registros financeiros atualizados.
+            </h5>
+        </div>
+    </section>
+
+    <section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8 bg-black' style="min-height: 70vh;">
+        <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10 ">
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4 text-white">
+                Sessão: Remover Despesas do usuário.
+            </h2>
+            <h5 class="md:text-xl text-lg text-white">
+              A remoção de despesas é uma operação crítica para garantir que os registros financeiros do usuário reflitam com precisão suas transações reais. Ao permitir a exclusão de despesas, a API ajuda os usuários a corrigirem entradas erradas e a manterem seus registros financeiros atualizados.
+            </h5>
+        </div>
+        <div class='md:w-1/2 flex flex-col justify-center items-center text-white'>
+            <div class="flex space-x-2 mb-2">
+                <button id="linkToCopy5" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    http://127.0.0.1:5000/api-finance-professional/remover-despesas/
+                </button>
+                 <button id="copyLinkBtn5" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-1xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 text-black dark:hover:bg-gray-700 me-2 mb-2">
+                    Copiar Link
+                </button>
+            </div>
+            <h5 class="md:text-xl text-lg mt-4 text-white">
+                Para adicionar suas receitas, você deve enviar para a API um dicionário com os seguintes dados:
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4 text-white">
+            {"user": "E-mail da sua conta",
+            </h5>
+            <h5 id="#removerdespesa" class="md:text-xl text-lg mt-4 text-white">
+                "token": <a href="#receita" class="underline text-blue-600" data-modal-target="default-modal" data-modal-toggle="default-modal">"Seu token de usuário"</a>,
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4 text-white">
+             "id_despesa" : "ID da despesa que deseja remover",
+            </h5>
+            <h5 class="md:text-xl text-lg mt-4 text-white">
+                Obs: O ID da despesa você consegue visualizar em seu resumo financeiro.
+            </h5>
+        </div>
+    </section>
+
+
+    <script>
+        document.getElementById('copyLinkBtn').addEventListener('click', function() {
+            // Seleciona o elemento de input oculto
+            const linkInput = document.getElementById('hiddenLinkInput');
+
+            // Torna o input visível para seleção (necessário para copiar o texto)
+            linkInput.classList.remove('hidden');
+
+            // Seleciona o texto do input
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+            try {
+                // Copia o texto selecionado para a área de transferência
+                const successful = document.execCommand('copy');
+                const msg = successful ? 'Link copiado para a área de transferência' : 'Falha ao copiar o link';
+                alert(msg);
+            } catch (err) {
+                console.error('Erro ao tentar copiar o texto: ', err);
+            }
+
+            // Torna o input oculto novamente
+            linkInput.classList.add('hidden');
+        });
+    </script>
+
+    <footer class="px-5 py-10 bg-black">
+        <ul class="flex justify-between items-center">
+            <li class="text-white">&copy; 2024</li>
+            <li class="text-white"> Feito com Python (Flask)</li>
+            <li class="text-white">REST API</li>
+        </ul>
+    </footer>
+{% endblock %}
+    </script>

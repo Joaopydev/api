@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+
+{% block body %}
+    <header class="min-h-screen bg-slate-800 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat">
+        <div class="h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
+
+            <h1 class="font-semibold text-4xl md:text-5xl w-10/12 md:w-3/4 text-center">
+               Líquido Atual: R$ {{ cofre }}
+            </h1>
+            <h3 class="text-2xl md:text-2xl py-5 text-amber-400">
+                Receita Total: R$ {{ total_receita }}
+            </h3>
+            <h4 class="text-2xl md:text-2xl pb-3 text-red-600">
+                Despesa Total: R$ {{ total_despesa }}
+            </h4>
+        </div>
+    </header>
+    <section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8 bg-amber-400' style="min-height: 70vh; background-image: url('{{ url_for('static', filename='images/lista_receitas_usuario.jpg') }}')">
+        <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10 ">
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4 text">
+                Sessão de Receitas do usuário.
+            </h2>
+            <h5 class="md:text-xl text-lg">
+                Todas a Receitas (Ganhos) do Usuário serão apresentadas ao lado.
+            </h5>
+        </div>
+        {% if receitas %}
+        <div class='md:w-1/2 flex justify-center items-center flex-col text-center'>
+            {% for receita in receitas %}
+                <h1 class='md:text-xl text-lg mt-2'>
+                    {{ receita.tipo }}: {{ receita.valor }}
+                </h1>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class='md:w-1/2 flex justify-center items-center flex-col text-center'>
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4 text">
+                O usuário ainda não criou uma sessão de receitas.
+            </h2>
+            <h5 class="md:text-xl text-lg">
+                Confira a <a href="{{ url_for('comofunciona') }}">Gui da API</a>, para começar a adicionar suas metas!
+            </h5>
+        </div>
+        {% endif%}
+    </section>
+    <section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8 bg-red-600' style="min-height: 70vh; background-image: url('{{ url_for('static', filename='images/lista_despesas_usuario.png') }}')">
+        <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10 ">
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4">
+                Sessão de Despesas do usuário.
+            </h2>
+            <h5 class="md:text-xl text-lg">
+                Todas a Despesas do Usuário serão apresentadas ao lado.
+            </h5>
+        </div>
+        {% if despesas %}
+        <div class='md:w-1/2 flex justify-center items-center flex-col text-center'>
+            {% for despesa in despesas %}
+                <h1 class='md:text-xl text-lg mt-2'>
+                    {{ despesa.tipo }}: {{ despesa.valor }}
+                </h1>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class='md:w-1/2 flex justify-center items-center flex-col text-center'>
+            <h2 class="md:text-5xl text-4xl font-semibold mb-4 text">
+                O usuário ainda não criou uma sessão de despesas.
+            </h2>
+            <h5 class="md:text-xl text-lg">
+                Confira a <a href="{{ url_for('comofunciona') }}">Gui da API</a>, para começar a adicionar suas metas!
+            </h5>
+        </div>
+        {% endif %}
+    </section>
+{% endblock %}
